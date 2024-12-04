@@ -411,7 +411,7 @@ void song2mid(int songNum, long ptr)
 					else if (noteOn == 1)
 					{
 						curNote = command[0] - 12;
-						curVol = command[1] * 0.6;
+						curVol = command[1] * 0.5;
 						delayPos = seqPos + 2;
 
 						if (command[2] < 0x80)
