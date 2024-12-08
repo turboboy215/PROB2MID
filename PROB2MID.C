@@ -443,22 +443,24 @@ void song2mid(int songNum, long ptr)
 					}
 				}
 
-				/*Delay (long)*/
-				else if (command[0] >= 0x80 && command[0] < 0x90)
+				/*Delay (long) OR set vibrato*/
+				else if (command[0] >= 0x80 && command[0] < 0x9F)
 				{
-					if (seqPos != delayPos)
+					if (noteOn == 0)
 					{
-						curDelay += (ReadBE16(&romData[seqPos]) - 0x8000) * 2;
+						if (seqPos != delayPos)
+						{
+							curDelay += (ReadBE16(&romData[seqPos]) - 0x8000) * 2;
+						}
+						seqPos += 2;
+						noteOn = 1;
 					}
-					seqPos += 2;
-					noteOn = 1;
-				}
+					else
+					{
+						noteSize = 60;
+						seqPos++;
+					}
 
-				/*Set vibrato?*/
-				else if (command[0] >= 0x90 && command[0] < 0x9F)
-				{
-					noteSize = 60;
-					seqPos++;
 				}
 
 				/*Set note size*/

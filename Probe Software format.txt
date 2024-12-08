@@ -1,3 +1,7 @@
+Text string
+===================
+At the beginning of the sound data is the text string "(C)Probe" in ASCII.
+
 Song pointer table
 ===================
 The song pointer table consists of 16-bit (2 byte) values. It can be found using the following code:
