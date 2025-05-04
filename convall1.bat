@@ -1,0 +1,1 @@
+@for %%a in (*.spc) do PROB2MID "%%a" 1 SNES 1
